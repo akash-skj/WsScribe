@@ -38,7 +38,7 @@ You can run this project in two ways: **Docker (Recommended)** or **Manual**.
 This method spins up the Frontend, Backend, Database, and PgAdmin automatically.
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/akash-skj/WsScribe.git](https://github.com/akash-skj/WsScribe.git)
+    git clone https://github.com/akash-skj/WsScribe.git
     cd WsScribe
     ```
 
