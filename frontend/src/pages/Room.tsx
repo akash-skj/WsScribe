@@ -14,6 +14,7 @@ const Room = () => {
     { message: string; type: "success" | "error" }[]
   >([]);
   const API_URL = import.meta.env.VITE_API_BASE_URL;
+  const WS_URL = import.meta.env.VITE_WEBSOCKET_BASE_URL
 
   const socketRef = useRef<WebSocket | null>(null);
   const editorRef = useRef<any>(null);
@@ -49,7 +50,7 @@ const Room = () => {
   useEffect(() => {
     if (!roomId) return;
 
-    const ws = new WebSocket(`${API_URL}/room/${roomId}`);
+    const ws = new WebSocket(`${WS_URL}/ws/room/${roomId}`);
     socketRef.current = ws;
 
     ws.onopen = () => {
@@ -88,7 +89,7 @@ const Room = () => {
 
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_BASE_URL}/autocomplete`,
+          `${API_URL}/autocomplete`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
