@@ -32,6 +32,30 @@ A full-stack collaborative code editor that allows developers to edit code in re
 
 ## ⚙️ Setup & Installation
 
+You can run this project in two ways: **Docker (Recommended)** or **Manual**.
+
+### Option A: Docker (Quick Start)
+This method spins up the Frontend, Backend, Database, and PgAdmin automatically.
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/akash-skj/WsScribe.git](https://github.com/akash-skj/WsScribe.git)
+    cd WsScribe
+    ```
+
+2.  **Run with Docker Compose:**
+    ```bash
+    docker-compose up --build
+    ```
+
+3.  **Access the Application:**
+    * **Frontend:** [http://localhost:5173](http://localhost:5173)
+    * **Backend API:** [http://localhost:8000/docs](http://localhost:8000/docs)
+    * **PgAdmin:** [http://localhost:8080](http://localhost:8080) (Login: `admin@admin.com` / `password`)
+
+---
+
+### Option B: Manual Setup (For Development)
+
 ### Prerequisites
 * Node.js (v18+)
 * Python (v3.10+)
