@@ -1,0 +1,53 @@
+services:
+  # 1. The Database
+  db:
+    image: postgres:15
+    container_name: WsScribe
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: wsscribedb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d wsscribedb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  
+  # 2. PgAdmin
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+  # 3. The Backend API
+  backend:
+    build: ./backend
+    container_name: wsscribe_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Crucial: In Docker, the host is the service name "db", not "localhost"
+      DATABASE_URL: postgresql+asyncpg://user:password@db:5432/wsscribedb
+
+  # 4. The Frontend (Nginx)
+  frontend:
+    build: ./frontend
+    container_name: wsscribe_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
