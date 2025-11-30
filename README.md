@@ -1,0 +1,84 @@
+# Real-Time Pair Programming Application
+
+A full-stack collaborative code editor that allows developers to edit code in real-time within the same room. The application features live syntax highlighting, WebSocket-based synchronization, and a mock AI autocomplete engine.
+
+## 🚀 Features
+
+* **Real-Time Collaboration:** 2 users can join a unique room and edit code simultaneously (latency < 100ms).
+* **Syntax Highlighting:** Integrated Monaco Editor (VS Code core) for a professional coding experience.
+* **Mock AI Assistant:** Detects when a user stops typing and offers context-aware code suggestions.
+* **Persistence:** Room state is saved to a PostgreSQL database.
+* **Instant Sharing:** Generate unique URL links for one-click onboarding.
+
+---
+
+## 🛠 Tech Stack
+
+**Backend**
+* **Python 3.10+ / FastAPI:** High-performance async API framework.
+* **WebSockets:** For full-duplex communication.
+* **PostgreSQL (Asyncpg):** For persistent storage of room data.
+* **SQLAlchemy (Async):** ORM for database interactions.
+* **Alembic:** For database schema migrations.
+* **Docker:** Containerized database service.
+
+**Frontend**
+* **React 18 (Vite):** Fast, modern SPA structure.
+* **TypeScript:** For type safety and better developer tooling.
+* **Monaco Editor:** The industry-standard web code editor.
+* **Tailwind CSS + DaisyUI:** For rapid, component-based UI styling.
+
+---
+
+## ⚙️ Setup & Installation
+
+### Prerequisites
+* Node.js (v18+)
+* Python (v3.10+)
+* Docker Desktop (for the Database)
+
+### 1. Start the Database
+Run the PostgreSQL container using Docker Compose:
+```bash
+cd backend
+docker-compose up -d
+```
+### 2. Backend Setup
+Navigate to the backend folder and install dependencies:
+```bash
+
+cd backend
+python -m venv venv
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+create .env file: 
+```
+DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/tredence_app
+```
+Create migration file and migrate:
+```bash
+alembic revision --autogenerate -m "Initial migration"
+alembic upgrade head
+```
+Run the api server:
+```bash
+fastapi dev app/main.py
+```
+### 3. Frontend Setup
+Navigate to the frontend folder and install dependencies:
+```bash
+cd frontend
+npm install
+```
+Create .env file and run:
+```bash
+VITE_API_BASE_URL=http://localhost:8000
+VITE_WEBSOCKET_BASE_URL=ws://localhost:8000
+npm run dev
+```
+The Client will run on http://localhost:5173
