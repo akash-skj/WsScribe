@@ -41,6 +41,16 @@ This method spins up the Frontend, Backend, Database, and PgAdmin automatically.
     git clone https://github.com/akash-skj/WsScribe.git
     cd WsScribe
     ```
+2. **Create env files in frontend and backend folder:**
+   frontend:
+    ```bash
+    VITE_API_BASE_URL=http://localhost:8000
+    VITE_WEBSOCKET_BASE_URL=ws://localhost:8000
+    ```
+    backend:
+    ```bash
+    DATABASE_URL=postgresql+asyncpg://user:password@db:5432/wsscribedb
+    ```
 
 2.  **Run with Docker Compose:**
     ```bash
