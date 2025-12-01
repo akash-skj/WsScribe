@@ -92,7 +92,7 @@ pip install -r requirements.txt
 ```
 create .env file: 
 ```
-DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/tredence_app
+DATABASE_URL=postgresql+asyncpg://user:password@db:5432/wsscribedb
 ```
 Create migration file and migrate:
 ```bash
