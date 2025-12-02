@@ -38,8 +38,18 @@ You can run this project in two ways: **Docker (Recommended)** or **Manual**.
 This method spins up the Frontend, Backend, Database, and PgAdmin automatically.
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/akash-skj/WsScribe.git](https://github.com/akash-skj/WsScribe.git)
+    git clone https://github.com/akash-skj/WsScribe.git
     cd WsScribe
+    ```
+2. **Create env files in frontend and backend folder:**
+   frontend:
+    ```bash
+    VITE_API_BASE_URL=http://localhost:8000
+    VITE_WEBSOCKET_BASE_URL=ws://localhost:8000
+    ```
+    backend:
+    ```bash
+    DATABASE_URL=postgresql+asyncpg://user:password@db:5432/wsscribedb
     ```
 
 2.  **Run with Docker Compose:**
@@ -82,7 +92,7 @@ pip install -r requirements.txt
 ```
 create .env file: 
 ```
-DATABASE_URL=postgresql+asyncpg://user:password@localhost:5432/tredence_app
+DATABASE_URL=postgresql+asyncpg://user:password@db:5432/wsscribedb
 ```
 Create migration file and migrate:
 ```bash
