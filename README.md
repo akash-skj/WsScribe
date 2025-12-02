@@ -1,6 +1,16 @@
-# Real-Time Pair Programming Application
+# WsScribe - Real-Time Pair Programming Application
 
-A full-stack collaborative code editor that allows developers to edit code in real-time within the same room. The application features live syntax highlighting, WebSocket-based synchronization, and a mock AI autocomplete engine.
+### 🔴 Live Demo & Important Note
+**Please Read First:** The backend is hosted on a free Render instance, which **spins down on inactivity**.
+
+1.  👉 **Step 1: Wake up the Server**
+    Click this link and wait ~50 seconds: [https://wsscribe-backend.onrender.com/docs](https://wsscribe.onrender.com/docs)
+    *(When the API documentation loads, the server is ready!)*
+
+2.  👉 **Step 2: Use the Application**
+    [https://ws-scribe.vercel.app](https://ws-scribe.vercel.app)
+
+---
 
 ## 🚀 Features
 
